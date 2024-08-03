@@ -5,7 +5,7 @@ import pg from "pg";
 const app = express();
 const port = 3010;
 
-/*const db = new pg.Client({
+const db = new pg.Client({
     user: "postgres",
     host: "localhost",
     database: "user",
@@ -13,7 +13,7 @@ const port = 3010;
     port: 5432,
 });
 
-/*db.connect();*/
+db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static('public'));
@@ -26,7 +26,7 @@ app.get("/signup", (req,res) => {
     res.render("index2.ejs");
 });
 
-/*app.post("/signup", async(req,res) => {
+app.post("/signup", async(req,res) => {
     const email = req.body["email"];
     const password = req.body["password"];
     await db.query("InSERT INTO signup(email,password) VALUES ($1, $2)", [
@@ -49,7 +49,7 @@ app.post("/submit", async(req,res) => {
             res.send("password does not match");
     }
     }
-});*/
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);
